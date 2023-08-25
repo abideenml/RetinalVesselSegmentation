@@ -14,7 +14,7 @@ if len(sys.argv) == 2:
 else:
     print("Wrong Augment!")
     exit(1)
-
+  
 # config file to read from
 config = configparser.RawConfigParser()
 config.readfp(open(r'./' + config_name))
