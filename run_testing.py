@@ -34,7 +34,7 @@ elif sys.platform=='win32':
     os.system('md ' + result_dir)
 else:
     os.system('mkdir -p ' + result_dir)
-
+ 
 
 # finally run the prediction
 if nohup:
