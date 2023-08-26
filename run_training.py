@@ -42,6 +42,8 @@ if sys.platform=='win32':
 else:
     os.system('cp configuration.txt ./' +name_experiment+'/'+name_experiment+'_configuration.txt')
 
+
+
 # run the experiment
 if nohup:
     print("\n 2. Run the training on GPU with nohup")
