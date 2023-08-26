@@ -33,6 +33,8 @@ width = 700
 # dataset_path = "./STARE_datasets_training_testing/"
 dataset_path = "./staree_datasets/"
 
+
+
 def get_datasets(imgs_dir, groundTruth_dir, borderMasks_dir, Nimgs):
     imgs = np.empty((Nimgs,height,width,channels))
     groundTruth = np.empty((Nimgs,height,width))
