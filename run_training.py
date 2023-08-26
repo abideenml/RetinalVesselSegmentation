@@ -51,5 +51,5 @@ if nohup:
 else:
     print("\n 2. Run the training on GPU (no nohup)")
     os.system(run_GPU +' python ./src/retina_unet_training.py')
-
+ 
 # Prediction/testing is run with a different script
