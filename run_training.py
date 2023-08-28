@@ -14,7 +14,7 @@ if len(sys.argv) == 2:
     config_name = sys.argv[1]
 else:
     print("Wrong Augment!")
-    exit(1)
+    exit(1)  
 
 # config file to read from
 config = configparser.RawConfigParser()
