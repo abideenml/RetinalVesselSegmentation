@@ -101,6 +101,9 @@ def get_data_training_rotate(train_imgs_original,
     return patches_imgs_train, patches_masks_train  # , patches_imgs_test, patches_masks_test
 
 
+
+
+
 # extract patches randomly in the full training images
 # -- Inside OR in full image
 def extract_random_rotate(full_imgs,full_masks, patch_h,patch_w, N_patches, inside=True):
