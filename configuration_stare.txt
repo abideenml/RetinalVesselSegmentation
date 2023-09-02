@@ -18,7 +18,6 @@ name = test_stare
 patch_height = 48
 patch_width = 48
 
-
 [trainingsettings]
 #number of total patches:
 # 160000
