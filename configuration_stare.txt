@@ -22,11 +22,11 @@ patch_width = 48
 [trainingsettings]
 #number of total patches:
 # 160000
-N_subimgs = 1600
+N_subimgs = 160000
 #if patches are extracted only inside the field of view:
 inside_FOV = False
 #Number of training epochs
-N_epochs = 2
+N_epochs = 50
 batch_size = 32
 #if running with nohup
 nohup = False
