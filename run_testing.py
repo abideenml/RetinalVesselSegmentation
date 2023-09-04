@@ -25,7 +25,16 @@ nohup = config.getboolean('testingsettings', 'nohup')   #std output on log file?
 
 run_GPU = '' if sys.platform == 'win32' else ' THEANO_FLAGS=device=gpu,floatX=float32 '
 
-
+#create a folder for the results if not existing already
+result_dir = name_experiment
+print("\n1. Create directory for the results (if not already existing)")
+if os.path.exists(result_dir):
+    pass
+elif sys.platform=='win32':
+    os.system('md ' + result_dir)
+else:
+    os.system('mkdir -p ' + result_dir)
+ 
 
 # finally run the prediction
 if nohup:
