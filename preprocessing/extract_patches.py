@@ -152,7 +152,41 @@ def extract_random_rotate(full_imgs,full_masks, patch_h,patch_w, N_patches, insi
 
 
 
+#Load the original data and return the extracted patches for training/testing
+def get_data_testing(DRIVE_test_imgs_original, DRIVE_test_groudTruth, Imgs_to_test, patch_height, patch_width):
+    ### test
+    test_imgs_original = load_hdf5(DRIVE_test_imgs_original)
+    test_masks = load_hdf5(DRIVE_test_groudTruth)
 
+    test_imgs = my_PreProc(test_imgs_original)
+    test_masks = test_masks/255.
+
+    #extend both images and masks so they can be divided exactly by the patches dimensions
+    test_imgs = test_imgs[0:Imgs_to_test,:,:,:]
+    test_masks = test_masks[0:Imgs_to_test,:,:,:]
+    test_imgs = paint_border(test_imgs,patch_height,patch_width)
+    test_masks = paint_border(test_masks,patch_height,patch_width)
+
+    data_consistency_check(test_imgs, test_masks)
+
+    #check masks are within 0-1
+    assert(np.max(test_masks)==1  and np.min(test_masks)==0)
+
+    print("\ntest images/masks shape:")
+    print(test_imgs.shape)
+    print("test images range (min-max): " +str(np.min(test_imgs)) +' - '+str(np.max(test_imgs)))
+    print("test masks are within 0-1\n")
+
+    #extract the TEST patches from the full images
+    patches_imgs_test = extract_ordered(test_imgs,patch_height,patch_width)
+    patches_masks_test = extract_ordered(test_masks,patch_height,patch_width)
+    data_consistency_check(patches_imgs_test, patches_masks_test)
+
+    print("\ntest PATCHES images/masks shape:")
+    print(patches_imgs_test.shape)
+    print("test PATCHES images range (min-max): " +str(np.min(patches_imgs_test)) +' - '+str(np.max(patches_imgs_test)))
+
+    return patches_imgs_test, patches_masks_test
 
 
 # Load the original data and return the extracted patches for testing
