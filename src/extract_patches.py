@@ -100,13 +100,7 @@ def get_data_training_rotate(train_imgs_original,
     print("train PATCHES images range (min-max): " + str(np.min(patches_imgs_train)) + ' - ' + str(np.max(patches_imgs_train)))
 
     return patches_imgs_train, patches_masks_train  # , patches_imgs_test, patches_masks_test
-data_consistency_check(patches_imgs_train, patches_masks_train)
 
-    print("\ntrain PATCHES images/masks shape:")
-    print(patches_imgs_train.shape)
-    print("train PATCHES images range (min-max): " + str(np.min(patches_imgs_train)) + ' - ' + str(np.max(patches_imgs_train)))
-
-    return patches_imgs_train, patches_masks_train  # , patches_imgs_test, patches_masks_test
 
 
 
