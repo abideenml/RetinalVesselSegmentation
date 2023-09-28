@@ -7,6 +7,8 @@ def load_hdf5(infile):
   with h5py.File(infile,"r") as f:  #"with" close the file after its nested commands
     return f["image"][()]
 
+
+
 def write_hdf5(arr,outfile):
   with h5py.File(outfile,"w") as f:
     f.create_dataset("image", data=arr, dtype=arr.dtype)
