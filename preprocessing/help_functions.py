@@ -2,12 +2,10 @@ import h5py
 import numpy as np
 from PIL import Image
 from matplotlib import pyplot as plt
- 
+
 def load_hdf5(infile):
   with h5py.File(infile,"r") as f:  #"with" close the file after its nested commands
     return f["image"][()]
-
-
 
 def write_hdf5(arr,outfile):
   with h5py.File(outfile,"w") as f:
@@ -54,12 +52,14 @@ def visualize(data,filename):
 
 # prepare the mask in the right shape for the Unet
 def masks_Unet(masks):
+    print("in mask_unet", masks.shape)
     assert (len(masks.shape)==4)  #4D arrays
-    
     im_h = masks.shape[2]
     im_w = masks.shape[3]
     masks = np.reshape(masks,(masks.shape[0],im_h*im_w))
-    new_masks = np.empty((masks.shape[0],im_h*im_w,2))
+    print("Masks: ", masks.shape)
+    new_masks = np.empty((masks.shape[0],im_h* im_w,2))
+    print("New mask", new_masks.shape)
     for i in range(masks.shape[0]):
         for j in range(im_h*im_w):
             if  masks[i,j] == 0:
@@ -68,10 +68,12 @@ def masks_Unet(masks):
             else:
                 new_masks[i,j,0]=0
                 new_masks[i,j,1]=1
+    # new_masks = np.reshape(new_masks,(new_masks.shape[0],im_h,im_w,2))
     return new_masks
 
 
 def pred_to_imgs(pred, patch_height, patch_width, mode="original"):
+    # OLD
     assert (len(pred.shape)==3)  #3D array: (Npatches,height*width,2)
     assert (pred.shape[2]==2 )  #check the classes are 2
     pred_images = np.empty((pred.shape[0],pred.shape[1]))  #(Npatches,height*width)
@@ -90,4 +92,9 @@ def pred_to_imgs(pred, patch_height, patch_width, mode="original"):
         print("mode " + str(mode) + " not recognized, it can be 'original' or 'threshold'")
         exit()
     pred_images = np.reshape(pred_images,(pred_images.shape[0],1, patch_height, patch_width))
+
     return pred_images
+
+
+
+

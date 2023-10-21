@@ -151,7 +151,6 @@ def extract_random_rotate(full_imgs,full_masks, patch_h,patch_w, N_patches, insi
     return patches, patches_masks
 
 
-
 #Load the original data and return the extracted patches for training/testing
 def get_data_testing(DRIVE_test_imgs_original, DRIVE_test_groudTruth, Imgs_to_test, patch_height, patch_width):
     ### test
@@ -187,6 +186,7 @@ def get_data_testing(DRIVE_test_imgs_original, DRIVE_test_groudTruth, Imgs_to_te
     print("test PATCHES images range (min-max): " +str(np.min(patches_imgs_test)) +' - '+str(np.max(patches_imgs_test)))
 
     return patches_imgs_test, patches_masks_test
+
 
 
 # Load the original data and return the extracted patches for testing

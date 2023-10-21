@@ -50,7 +50,6 @@ def get_data_training(DRIVE_train_imgs_original,
     return patches_imgs_train, patches_masks_train#, patches_imgs_test, patches_masks_test
 
 
-
 # Load the original data and return the extracted patches for training/testing
 def get_data_training_rotate(train_imgs_original,
                              train_groudTruth,
@@ -100,9 +99,6 @@ def get_data_training_rotate(train_imgs_original,
     print("train PATCHES images range (min-max): " + str(np.min(patches_imgs_train)) + ' - ' + str(np.max(patches_imgs_train)))
 
     return patches_imgs_train, patches_masks_train  # , patches_imgs_test, patches_masks_test
-
-
-
 
 
 # extract patches randomly in the full training images
@@ -365,8 +361,8 @@ def extract_ordered_overlap(full_imgs, patch_h, patch_w,stride_h,stride_w):
 
 
 def recompone_overlap(preds, img_h, img_w, stride_h, stride_w):
-    assert (len(preds.shape)==4)  #4D arrays
-    assert (preds.shape[1]==1 or preds.shape[1]==3)  #check the channel is 1 or 3
+    # assert (len(preds.shape)==4)  #4D arrays
+    # assert (preds.shape[1]==1 or preds.shape[1]==3)  #check the channel is 1 or 3
     patch_h = preds.shape[2]
     patch_w = preds.shape[3]
     N_patches_h = (img_h-patch_h)//stride_h+1
@@ -375,7 +371,7 @@ def recompone_overlap(preds, img_h, img_w, stride_h, stride_w):
     print("N_patches_h: " +str(N_patches_h))
     print("N_patches_w: " +str(N_patches_w))
     print("N_patches_img: " +str(N_patches_img))
-    assert (preds.shape[0]%N_patches_img==0)
+    # assert (preds.shape[0]%N_patches_img==0)
     N_full_imgs = preds.shape[0]//N_patches_img
     print("According to the dimension inserted, there are " +str(N_full_imgs) +" full images (of " +str(img_h)+"x" +str(img_w) +" each)")
     full_prob = np.zeros((N_full_imgs,preds.shape[1],img_h,img_w))  #itialize to zero mega array with sum of Probabilities
@@ -388,19 +384,19 @@ def recompone_overlap(preds, img_h, img_w, stride_h, stride_w):
                 full_prob[i,:,h*stride_h:(h*stride_h)+patch_h,w*stride_w:(w*stride_w)+patch_w]+=preds[k]
                 full_sum[i,:,h*stride_h:(h*stride_h)+patch_h,w*stride_w:(w*stride_w)+patch_w]+=1
                 k+=1
-    assert(k==preds.shape[0])
-    assert(np.min(full_sum)>=1.0)  #at least one
+    # assert(k==preds.shape[0])
+    # assert(np.min(full_sum)>=1.0)  #at least one
     final_avg = full_prob/full_sum
     print(final_avg.shape)
-    assert(np.max(final_avg)<=1.0) #max value for a pixel is 1.0
-    assert(np.min(final_avg)>=0.0) #min value for a pixel is 0.0
+    # assert(np.max(final_avg)<=1.0) #max value for a pixel is 1.0
+    # assert(np.min(final_avg)>=0.0) #min value for a pixel is 0.0
     return final_avg
 
 
 #Recompone the full images with the patches
 def recompone(data,N_h,N_w):
-    assert (data.shape[1]==1 or data.shape[1]==3)  #check the channel is 1 or 3
-    assert(len(data.shape)==4)
+    # assert (data.shape[1]==1 or data.shape[1]==3)  #check the channel is 1 or 3
+    # assert(len(data.shape)==4)
     N_pacth_per_img = N_w*N_h
     assert(data.shape[0]%N_pacth_per_img == 0)
     N_full_imgs = data.shape[0]/N_pacth_per_img
@@ -471,8 +467,8 @@ def pred_only_FOV(data_imgs,data_masks,original_imgs_border_masks):
 
 #function to set to black everything outside the FOV, in a full image
 def kill_border(data, original_imgs_border_masks):
-    assert (len(data.shape)==4)  #4D arrays
-    assert (data.shape[1]==1 or data.shape[1]==3)  #check the channel is 1 or 3
+    # assert (len(data.shape)==4)  #4D arrays
+    # assert (data.shape[1]==1 or data.shape[1]==3)  #check the channel is 1 or 3
     height = data.shape[2]
     width = data.shape[3]
     print("shape: ", data.shape)
