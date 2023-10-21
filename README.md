@@ -1,7 +1,14 @@
-# Retinal Vessel Segmentation based on Fully Convolutional Networks
+# Retinal Vessel Segmentation using R2U-Net and Attention R2U-Net 
 
 The morphological attributes of retinal vessels, such as length, width, tortuosity and branching pattern and angles, play an important role in diagnosis, screening, treatment, and evaluation of various cardiovascular and ophthalmologic diseases such as diabetes, hypertension and arteriosclerosis. The crucial step before extracting these morphological characteristics of retinal vessels from retinal fundus images is vessel segmentation. In this work, we propose a method for retinal vessel segmentation based on fully convolutional networks. Thousands of patches are extracted from each retinal image and then fed into the network, and data argumentation is applied by rotating extracted patches. Two architectures of fully convolutional networks, R2U-Net and AttR2U-Net, are used for vessel segmentation.
 
+
+
+Results on Stare dataset:
+
+<p align="center">
+<img src="readme_pics/test_stare_Original_GroundTruth_Prediction0.png" width="400"/>
+</p>
 
 ## Table of Contents
   * [Method](#method)
