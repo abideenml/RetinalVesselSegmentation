@@ -1,5 +1,9 @@
 # Retinal Vessel Segmentation based on Fully Convolutional Networks
 
+
+
+
+
 Full paper available on https://arxiv.org/abs/1911.09915
 
 ![](Images/result_drive.png)
@@ -84,6 +88,74 @@ python run_keep_training.py <configuration_drive.txt|configuration_stare.txt|con
 python run_testing.py <configuration_drive.txt|configuration_stare.txt|configuration_chase.txt>
 ```
 
+
+
+## Setup
+
+So we talked about what telephone based social engineering attacks are, and what they can do for you (among other things). <br/>
+Let's get this thing running! Follow the next steps:
+
+1. `git clone https://github.com/abideenml/Detecting-SocialEngineering-Attacks`
+2. Navigate into project directory `cd path_to_repo`
+3. Create a new venv environment and run `pip install -r requirements.txt`
+4. Run the `DocToVec_KMeans_+_EM_CLustering_Classifications_+_DBSCAN.ipynb` and `Universal_Vector_Encoding_KMeans_+_EM_+_DBSCAN_Clustering_Classifications.ipynb` file.
+
+That's it! It should work out-of-the-box executing requirements.txt file which deals with dependencies. <br/>
+
+
+
+
+
+## Todos:
+
+Finally there are a couple more todos which I'll hopefully add really soon:
+* Explore how open source LLMs can be used to detect these scams.
+* Make a data pipeline with Kedro and MLflow.
+
+
+
+
+
+
+## Acknowledgements
+
+I found these resources useful (while developing this one):
+
+* [Retinal Vessel Segmentation on Papers with code](https://paperswithcode.com/task/retinal-vessel-segmentation)
+* [Keras UNET implementation](https://github.com/lixiaolei1982/Keras-Implementation-of-U-Net-R2U-Net-Attention-U-Net-Attention-R2U-Net.-)
+
+
+
+## Citation
+
+If you find this code useful, please cite the following:
+
+```
+@misc{Zain2023RetinalVesselSegmentation,
+  author = {Zain, Abideen},
+  title = {retinal-vessel-segmentation},
+  year = {2023},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/abideenml/RetinalVesselSegmentation}},
+}
+```
+
+## Connect with me
+
+If you'd love to have some more AI-related content in your life :nerd_face:, consider:
+
+* Connect and reach me on [LinkedIn](https://www.linkedin.com/in/zaiinulabideen/) and [Twitter](https://twitter.com/zaynismm)
+* Follow me on 📚 [Medium](https://medium.com/@zaiinn440)
+* Subscribe to my 📢 weekly [AI newsletter](https://rethinkai.substack.com/)!
+
+## Licence
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/abideenml/RetinalVesselSegmentation/blob/master/LICENCE)
+
+
+
+
 ## Bibliography
 [1] Melinscak, M., Prentasi, P., & Lonari, S. (2015, January). Retinal vessel segmentation using deep neural networks. In VISAPP 2015 (10th International Conference on Computer Vision Theory and Applications).
 
@@ -100,3 +172,5 @@ python run_testing.py <configuration_drive.txt|configuration_stare.txt|configura
 [7] Alom, M. Z., Hasan, M., Yakopcic, C., Taha, T. M., & Asari, V. K. (2018). Recurrent Residual Convolutional Neural Network based on U-Net (R2U-Net) for Medical Image Segmentation. arXiv preprint arXiv:1802.06955.
 
 [8] Zhuang, J. (2018). LadderNet: Multi-path networks based on U-Net for medical image segmentation. arXiv preprint arXiv:1810.07810.
+
+
