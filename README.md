@@ -29,7 +29,7 @@ During testing, images are cut into patches with size 48 × 48 and fed into the 
 
 ### Network Architecture
 #### U-Net 
-![](Images/U-Net.png)
+
 
 #### LadderNet
 ![](Images/LadderNet.png)
@@ -48,8 +48,8 @@ Table 1: Segmentation results of different deep learning based methods on DRIVE.
 | M2U-Net  [6]             | 0.8091     | -          | -          | **0.9630** | 0.9714     |
 | R2U-Net [7]              | 0.8171     | 0.7792     | 0.9813     | 0.9556     | 0.9784     |
 | LadderNet  [8]           | 0.8202     | 0.7856     | 0.9810     | 0.9561     | 0.9793     |
-| **This work, U-Net**     | 0.8169     | 0.7728     | **0.9826** | 0.9559     | 0.9794     |
-| **This work, LadderNet** | **0.8219** | 0.7871     | 0.9813     | 0.9566     | 0.9805     |
+| **U-Net**     | 0.8169     | 0.7728     | **0.9826** | 0.9559     | 0.9794     |
+| **R2U-Net** | **0.8171** | 0.7792     | 0.9813     | 0.9556     | 0.9784     |
 
 ### Results on STARE
 Table 2: Segmentation results of different deep learning based methods on STARE. Bold values show the best score among all methods.
@@ -61,47 +61,48 @@ Table 2: Segmentation results of different deep learning based methods on STARE.
 | Fu et al [4]             | -          | 0.7412     | -          | 0.9585     | -          |
 | Oliveira et al. [5]      | -          | **0.8315** | 0.9858     | 0.9694     | 0.9905     |
 | R2U-Net [7]              | **0.8475** | 0.8298     | 0.9862     | **0.9712** | **0.9914** |
-| **This work, U-Net**     | 0.8219     | 0.7739     | **0.9867** | 0.9638     | 0.9846     |
-| **This work, LadderNet** | 0.7694     | 0.7513     | 0.9764     | 0.9529     | 0.9660     |
+| **U-Net**     | 0.8219     | 0.7739     | **0.9867** | 0.9638     | 0.9846     |
+| **R2U-Net** | 0.8475      | 0.8298     | 0.9862     | 0.9712     | 0.9914    |
+| **My Results** | 0.7872     | 0.7783     | 0.97508     | 0.9532    | 0.9728   |
 
-## Running Experiments
+
+## Setup
+So we talked about what retinal vessel segmentation is and what architectures can be used for this task. <br/>
+Let's get this thing running!  Follow the next steps:
+
+`git clone https://github.com/abideenml/Detecting-SocialEngineering-Attacks`
+
+Navigate into project directory `cd path_to_repo`
+
+Create a new venv environment and run `pip install -r requirements.txt`
+
 ### Requirements
-* numpy >= 1.11.1
-* PIL >=1.1.7
-* opencv >=2.4.10
-* h5py >=2.6.0
-* ConfigParser >=3.5.0b2
-* scikit-learn >= 0.17.1
+* numpy >= 1.24.3
+* PIL -=10.0.0
+* opencv ==4.8.0.76
+* h5py ==3.9.0
+* scikit-learn == 1.3.0
+* tensorflow ==2.13.0
+
+### Download and Prepare the Dataset
+
+Download the Stare dataset from `https://cecas.clemson.edu/~ahoover/stare/` and place it in a new folder `STARE`.
+
+Run the script `prepare_datasets_STARE.py` to prepare dataset and store in `STARE_datasets_training_testing` hdf5 format.
 
 ### Training
 Training from scratch:
 ```
-python run_training.py <configuration_drive.txt|configuration_stare.txt|configuration_chase.txt>
+python run_training.py configuration_stare.txt
 ```
 
-Keep training based on pretrained models:
-```
-python run_keep_training.py <configuration_drive.txt|configuration_stare.txt|configuration_chase.txt>
-```
+
 ### Inference and Evaluation
 ```
-python run_testing.py <configuration_drive.txt|configuration_stare.txt|configuration_chase.txt>
+python run_testing.py configuration_stare.txt
 ```
 
-
-
-## Setup
-
-So we talked about what telephone based social engineering attacks are, and what they can do for you (among other things). <br/>
-Let's get this thing running! Follow the next steps:
-
-1. `git clone https://github.com/abideenml/Detecting-SocialEngineering-Attacks`
-2. Navigate into project directory `cd path_to_repo`
-3. Create a new venv environment and run `pip install -r requirements.txt`
-4. Run the `DocToVec_KMeans_+_EM_CLustering_Classifications_+_DBSCAN.ipynb` and `Universal_Vector_Encoding_KMeans_+_EM_+_DBSCAN_Clustering_Classifications.ipynb` file.
-
-That's it! It should work out-of-the-box executing requirements.txt file which deals with dependencies. <br/>
-
+That's it!
 
 
 
@@ -109,8 +110,8 @@ That's it! It should work out-of-the-box executing requirements.txt file which d
 ## Todos:
 
 Finally there are a couple more todos which I'll hopefully add really soon:
-* Explore how open source LLMs can be used to detect these scams.
-* Make a data pipeline with Kedro and MLflow.
+* Effectively calculate the dimensions of segmented retinal vessels for heart disease detection.
+* Benchmark the results of Attention R2UNET.
 
 
 
